@@ -2,6 +2,8 @@
 	"extends": "@sindresorhus/tsconfig",
 	"compilerOptions": {
 		"target": "esnext",
+		"module": "es2015", // Enables ModuleConcatenation
+		"resolveJsonModule": true,
 		// "noEmit": true, // Useful when running `tsc` directly
 
 		// TODO: Get all these removed
