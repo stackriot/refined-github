@@ -12,9 +12,9 @@
 		"watch:firefox": "web-ext run --source-dir=distribution",
 		"prerelease:version": "VER=$(daily-version) && dot-json distribution/manifest.json version $TRAVIS_TAG",
 		"prerelease:source-url": "echo https://github.com/sindresorhus/refined-github/tree/\"${TRAVIS_COMMIT:-$VER}\" > distribution/SOURCE_URL",
+		"release:amo": "cd distribution && web-ext sign",
 		"release:cws": "cd distribution && webstore upload --auto-publish",
-		"release:amo": "cd distribution && web-ext-submit",
-		"release": "npm-run-all build prerelease:* --parallel release:* --serial create-git-tag",
+		"release": "npm-run-all build prerelease:* release:* create-git-tag",
 		"create-git-tag": "git tag $VER -m $VER && git push origin $VER"
 	},
 	"dependencies": {
